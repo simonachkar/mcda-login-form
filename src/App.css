@@ -27,8 +27,8 @@
 .App-button {
   background-color: #61dafb;
   border-width: 0;
-  border-radius: 20px;
-  padding: 1rem 2rem;
+  border-radius: 4px;
+  padding: 1rem 1rem;
   font-size: x-large;
   margin: 2rem;
   cursor: pointer;
