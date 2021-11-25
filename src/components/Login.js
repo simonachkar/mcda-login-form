@@ -8,6 +8,10 @@ function Login() {
 
     const usernameEl = useRef(null);
 
+    const submitForm = () => {
+        console.log(name, email, hometown)
+    }
+
     return (
         <div className="login-form">
             <form action="#!" id="main">
@@ -31,7 +35,6 @@ function Login() {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-
                     />
                 </div>
 
@@ -45,7 +48,7 @@ function Login() {
                     />
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit" onClick={() => submitForm()}>Enter</button>
             </form>
 
         </div>
