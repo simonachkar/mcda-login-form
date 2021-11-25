@@ -40,15 +40,38 @@
     border-width: 0;
     border-radius: 4px;
     padding: 1rem 1rem;
-    width: 30vw;
+    width: 300px;
+    font-size: x-large;
+    margin: 2rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .login-button a {
+    text-decoration: none;
+    color: #282c34;
+  }
+
+  .login-button:hover {
+    background-color: #9ae8fd;
+  }
+
+  .logout-button {
+    background-color: #4b5d62;
+    color: #fff;
+    border-width: 0;
+    border-radius: 4px;
+    padding: 1rem 1rem;
+    width: 300px;
     font-size: x-large;
     margin: 2rem;
     cursor: pointer;
     text-decoration: none;
   }
   
-  .login-button:hover {
-    background-color: #9ae8fd;
+  .logout-button:hover {
+    background-color: #8fb2bd;
   }
   
   @keyframes App-logo-spin {
@@ -60,11 +83,3 @@
     }
   }
   
-  .mode-button {
-    background-color: transparent;
-    border-color: #61dafb;
-    border-radius: 4px;
-    padding: 1rem 1rem;
-    margin: 2rem;
-    cursor: pointer;
-  }

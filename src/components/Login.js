@@ -1,5 +1,7 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
+import { Navigate } from "react-router-dom"
 import './Login.css';
+import UserContext from '../context';
 
 function Login() {
     const [name, setName] = useState("");
@@ -11,6 +13,8 @@ function Login() {
     const nameEl = useRef(null);
     const emailEl = useRef(null);
     const hometownEl = useRef(null);
+
+    const { user, loginUser } = useContext(UserContext)
 
     const submitForm = () => {
         if (!name || name.length < 3) {
@@ -24,13 +28,23 @@ function Login() {
             setErrorMessage("Hometown is empty or invalid")
         } else {
             setErrorMessage("")
-            console.log(name, email, hometown)
+            // console.log(name, email, hometown)
+            const user = {
+                name,
+                email,
+                hometown
+            }
+            loginUser(user)
         }
+    }
+
+    if (user) {
+        return <Navigate to="/" />;
     }
 
     return (
         <div className="login-form">
-            <form id="main">
+            <div id="main">
                 <p>Enter your information</p>
 
                 <div class="input-parent">
@@ -68,8 +82,8 @@ function Login() {
 
                 <p style={{ color: 'red', fontWeight: 'bold', fontSize: 'small', textAlign: 'center' }}>{errorMessage}</p>
 
-                <button type="submit" onClick={() => submitForm()}>Enter</button>
-            </form>
+                <button onClick={() => submitForm()}>Enter</button>
+            </div>
 
         </div>
     );
