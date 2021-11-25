@@ -6,21 +6,37 @@ function Login() {
     const [email, setEmail] = useState("");
     const [hometown, setHometown] = useState("");
 
-    const usernameEl = useRef(null);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const nameEl = useRef(null);
+    const emailEl = useRef(null);
+    const hometownEl = useRef(null);
 
     const submitForm = () => {
-        console.log(name, email, hometown)
+        if (!name || name.length < 3) {
+            nameEl.current.focus();
+            setErrorMessage("Name is empty or invalid")
+        } else if (!email || email.length < 3) {
+            emailEl.current.focus();
+            setErrorMessage("Email is empty or invalid")
+        } else if ((!hometown || hometown.length < 3)) {
+            hometownEl.current.focus();
+            setErrorMessage("Hometown is empty or invalid")
+        } else {
+            setErrorMessage("")
+            console.log(name, email, hometown)
+        }
     }
 
     return (
         <div className="login-form">
-            <form action="#!" id="main">
+            <form id="main">
                 <p>Enter your information</p>
 
                 <div class="input-parent">
                     <label for="name">Name</label>
                     <input
-                        ref={usernameEl}
+                        ref={nameEl}
                         type="text"
                         id="name"
                         value={name}
@@ -31,6 +47,7 @@ function Login() {
                 <div class="input-parent">
                     <label for="email">Email</label>
                     <input
+                        ref={emailEl}
                         type="text"
                         id="email"
                         value={email}
@@ -39,14 +56,17 @@ function Login() {
                 </div>
 
                 <div class="input-parent">
-                    <label for="password">Hometown</label>
+                    <label for="hometown">Hometown</label>
                     <input
+                        ref={hometownEl}
                         type="text"
                         id="hometown"
                         value={hometown}
                         onChange={(e) => setHometown(e.target.value)}
                     />
                 </div>
+
+                <p style={{ color: 'red', fontWeight: 'bold', fontSize: 'small', textAlign: 'center' }}>{errorMessage}</p>
 
                 <button type="submit" onClick={() => submitForm()}>Enter</button>
             </form>
